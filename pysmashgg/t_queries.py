@@ -389,3 +389,63 @@ SHOW_BY_OWNER_QUERY = """query TournamentsByOwner($ownerId: ID!, $page: Int!) {
   }
 }
 """
+
+SHOW_STREAM_QUEUE_QUERY = """query StreamQueueBySlug($slug: String!) {
+			tournament(slug: $slug) {
+				streamQueue {
+					...sets
+				}
+			}
+		}
+
+		fragment sets on StreamQueue {
+			sets {
+				id
+				state
+				fullRoundText
+
+				stream {
+					streamSource
+					streamName
+				}
+
+				event {
+					name
+
+					tournament {
+						name
+					}
+
+					videogame {
+						name
+					}
+				}
+
+				slots {
+					entrant {
+						name
+						initialSeedNum
+
+						participants {
+							prefix
+							gamerTag
+
+							user {
+								images {
+									url
+								}
+							}
+						}
+					}
+
+					standing {
+						stats {
+							score {
+								value
+							}
+						}
+					}
+				}
+			}
+		}
+"""

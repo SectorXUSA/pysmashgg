@@ -571,12 +571,12 @@ def show_by_radius_filter(response):
 def show_players_by_sponsor_filter(response):
     if response['data']['tournament'] is None:
         return
-
+    
     if response['data']['tournament']['participants']['nodes'] is None:
         return
-
+    
     players = []
-
+    
     for node in response['data']['tournament']['participants']['nodes']:
         cur_player = {}
         cur_player['tag'] = node['gamerTag']
@@ -859,3 +859,15 @@ def league_show_standings_filter(response):
         players.append(cur_player)
 
     return players
+
+# Filter for the show_events function 
+def show_stream_queue_filter(response):
+    if response['data']['tournament'] is None:
+        return
+
+    if response['data']['tournament']['streamQueue'] is None:
+        return
+    
+    queue = response['data']['tournament']['streamQueue']
+    
+    return queue

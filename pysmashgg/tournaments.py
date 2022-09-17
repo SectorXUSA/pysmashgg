@@ -151,3 +151,10 @@ def show_by_owner(owner, page_num, header, auto_retry):
     response = run_query(SHOW_BY_OWNER_QUERY, variables, header, auto_retry)
     data = filters.show_by_owner_filter(response)
     return data
+
+# Shows a list of players at a tournament by their sponsor
+def show_stream_queue(tournament_name, header, auto_retry):
+    variables = {"slug": tournament_name}
+    response = run_query(SHOW_STREAM_QUEUE_QUERY, variables, header, auto_retry)
+    data = filters.show_stream_queue_filter(response)
+    return data

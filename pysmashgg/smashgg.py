@@ -149,3 +149,7 @@ class SmashGG(object):
     # League standings
     def league_show_standings(self, league_name, page_num):
         return leagues.show_standings(league_name, page_num, self.header, self.auto_retry)
+    
+    # Stream Queue for a tournament
+    def tournament_show_stream_queue(self, tournament_name):
+        return tournaments.show_stream_queue(tournament_name, self.header, self.auto_retry)
